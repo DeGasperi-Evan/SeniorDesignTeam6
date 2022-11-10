@@ -1,0 +1,9 @@
+Author: Nicholas Chorette
+Date Last Updated: 11/9/2022
+
+Commands to run the allPython.py file (aka, the thing that allows the Sim Code to move the car): 
+1) clear && python3 allPozyx.py
+
+Commands to run the team6SimCode.c (aka, main.c)
+1) gcc team6SimCode.c "comms.c" -lm && ./a.out
+
