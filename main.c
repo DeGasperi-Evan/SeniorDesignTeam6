@@ -36,9 +36,10 @@ double steerTable[16][2] = { //Modified for Nicholas CHorette's Team's car
   {70+6, 90}, {72+6, 95},  {74+6, 105},  {76+6, 110}, 
   {80+6, 115}, {82+6, 120}, {84+6, 125}, {86+6, 130}
 };
-// <3
 
-double controlArray[14][9] = {   
+// { circ/line(0/1), C_x/W1_x, C_y/W1_y, R/W2_x, CW/CCW (-1,1) / W2_y, Nx(halfplane), Ny(Halfplane), Px(halfplane), Py(Halfplane) }
+
+/* double controlArray[14][9] = {   
     {1,    1,    8.5,  1,    3,    0,    -1,   1,    3   }, 
     {0,    3,    3,    2,    1,    1,    0,    3,    1   },
     {1,    3,    1,    9.5,  1.5,  1,    0,    9.5,  1.5 },
@@ -54,27 +55,28 @@ double controlArray[14][9] = {
     {1,    6,    10.5, 3,    10.5, -1,   0,    3,    10.5},
     {0,    3,    8.5,  2,    1,    0,    -1,   1,    8.5 }
 };
+// */
 
 /* Line Test
 double controlArray[1][9] = {   
     {1,    1,    8.5,  1,    3,    0,    -1,   1,    3   }
 };
-*/
+// */
 
 /* Circle Test
 double controlArray[1][9] = {
     {0, 2.5, 8.5, 1.5, 1, 0, -1, 1, 100}
 };
-*/
+// */
 
-/* Mini Track Test
+// /* Mini Track Test
 double controlArray[4][9] = {
-    {1,    1,    8.5,  1,    6,    0,    -1,   1,    6   },
-    {0,    2.5   6,    1.5,  1,    0,     1,   4,    6   },
-    {1,    4,    6,    4,    8.5,  0,     1,   4,    8.5 },
-    {0,    2.5,  8.5,  1.5,  1,    0,    -1,   1,    8.5 }
+    {1,    1,    6,    1,    2,    0,    -1,   1,    2   },
+    {0,    2,    2,    1,    1,    0,     1,   3,    2   },
+    {1,    3,    2,    3,    6,    0,     1,   3,    6   },
+    {0,    2,    6,    1,    1,    0,    -1,   1,    6   }
 };
-*/
+// */
 
 int controlIndex = 0;
 double kp = 0;
