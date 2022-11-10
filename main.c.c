@@ -36,6 +36,7 @@ double steerTable[16][2] = { //Modified for Nicholas CHorette's Team's car
   {70+6, 90}, {72+6, 95},  {74+6, 105},  {76+6, 110}, 
   {80+6, 115}, {82+6, 120}, {84+6, 125}, {86+6, 130}
 };
+// <3
 
 double controlArray[14][9] = {   
     {1,    1,    8.5,  1,    3,    0,    -1,   1,    3   }, 
