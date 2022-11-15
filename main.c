@@ -29,9 +29,17 @@ struct Pipes openPipes() {
 int wait_loop0 = 10000/10;
 int wait_loop1 = 6000;
 
+ /* Variable Speed
 double driveTable[4][2] = {
     {78, 0.92}, {80, 1.56}, {82, 2.19}, {84, 2.61}
 };
+// */
+
+// /* Constant Speed
+double driveTable[1][2] = {
+    {60, 0.5}
+}
+
 double steerTable[16][2] = { //Modified for Nicholas CHorette's Team's car 
   {54+6, 45}, {56+6, 45}, {58+6, 55},  {60+6, 60},
   {62+6, 70}, {64+6, 75}, {66+6, 80}, {68+6, 85},
@@ -94,7 +102,7 @@ double kd = 0;
 double ki = 0;
 int lap = 0;
 double dt = 0.05;
-double v = 0.92;
+double v = 0.5;
 double carLocation[2] = {1, 6};
 double thetaC = 3 * M_PI/2;
 double thetaS = 0;
