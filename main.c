@@ -29,17 +29,27 @@ struct Pipes openPipes() {
 int wait_loop0 = 10000/10;
 int wait_loop1 = 6000;
 
+ /* Variable Speed
 double driveTable[4][2] = {
     {78, 0.92}, {80, 1.56}, {82, 2.19}, {84, 2.61}
 };
+// */
+
+// /* Constant Speed
+double driveTable[1][2] = {
+    {60, 0.5}
+}
+
 double steerTable[16][2] = { //Modified for Nicholas CHorette's Team's car 
   {54+6, 45}, {56+6, 45}, {58+6, 55},  {60+6, 60},
   {62+6, 70}, {64+6, 75}, {66+6, 80}, {68+6, 85},
   {70+6, 90}, {72+6, 95},  {74+6, 105},  {76+6, 110}, 
   {80+6, 115}, {82+6, 120}, {84+6, 125}, {86+6, 130}
 };
-// <3
 
+// { circ/line(0/1), C_x/W1_x, C_y/W1_y, R/W2_x, CW/CCW (-1,1) / W2_y, Nx(halfplane), Ny(Halfplane), Px(halfplane), Py(Halfplane) }
+
+// /* Track Test
 double controlArray[14][9] = {   
     {1,    1,    8.5,  1,    3,    0,    -1,   1,    3   }, 
     {0,    3,    3,    2,    1,    1,    0,    3,    1   },
@@ -56,27 +66,35 @@ double controlArray[14][9] = {
     {1,    6,    10.5, 3,    10.5, -1,   0,    3,    10.5},
     {0,    3,    8.5,  2,    1,    0,    -1,   1,    8.5 }
 };
+// */
+
+ /* Track Test (No circles)
+double controlArray[2][9] = {   
+    {1,    1,    8.5,  1,    3,    0,    -1,   1,    1.5   }, 
+    {1,    1,    1.5,  9.5,  1.5,  1,    0,    9.5,  1.5 }
+};
+// */
 
 /* Line Test
 double controlArray[1][9] = {   
     {1,    1,    8.5,  1,    3,    0,    -1,   1,    3   }
 };
-*/
+// */
 
 /* Circle Test
 double controlArray[1][9] = {
     {0, 2.5, 8.5, 1.5, 1, 0, -1, 1, 100}
 };
-*/
+// */
 
-/* Mini Track Test
+ /* Mini Track Test
 double controlArray[4][9] = {
-    {1,    1,    8.5,  1,    6,    0,    -1,   1,    6   },
-    {0,    2.5   6,    1.5,  1,    0,     1,   4,    6   },
-    {1,    4,    6,    4,    8.5,  0,     1,   4,    8.5 },
-    {0,    2.5,  8.5,  1.5,  1,    0,    -1,   1,    8.5 }
+    {1,    1,    6,    1,    2,    0,    -1,   1,    2   },
+    {0,    2,    2,    1,    1,    0,     1,   3,    2   },
+    {1,    3,    2,    3,    6,    0,     1,   3,    6   },
+    {0,    2,    6,    1,    1,    0,    -1,   1,    6   }
 };
-*/
+// */
 
 int controlIndex = 0;
 double kp = 0;
@@ -84,7 +102,7 @@ double kd = 0;
 double ki = 0;
 int lap = 0;
 double dt = 0.05;
-double v = 1.0;
+double v = 0.5;
 double carLocation[2] = {1, 6};
 double thetaC = 3 * M_PI/2;
 double thetaS = 0;
@@ -199,11 +217,12 @@ void main() {
         if(buf[0] != 0x0)
         {
             sscanf(strtok(buf, ","), "%lf", &posx);
-            printf("%.4lf\n", posx);
+            //printf("%.4lf\n", posx);
             sscanf(strtok(NULL, ","), "%lf", &posy);
-            printf("%.4lf\n", posy);
+            //printf("%.4lf\n", posy);
             sscanf(strtok(NULL, ","), "%lf", &heading);
-            printf("%.4lf\n", heading);
+            //printf("%.4lf\n", heading);
+            printf("Pozyx:     [%.4lf, %.4lf] Heading: %.4lf\n", posx, posy, heading);
         }
         double pozyxInfo[2] = {posx, posy}; 
 
@@ -220,7 +239,9 @@ void main() {
         double queueInsert[3] = {counter, X[0],X[1]};
         insert(queueInsert);
         counter +=1; 
-        printf("Coordinates: [%lf, %lf] Drive PWM: %lf Steer PWM: %lf \n", X[0], X[1], PWM[0], PWM[1]);
+        printf("Estimated: [%.4lf, %.4lf] Heading: %.4lf\n", X[0], X[1], X[2]);
+        printf("PWM:       Drive: %.lf Steer: %.lf\n\n", PWM[0], PWM[1]);
+        //printf("Coordinates: [%lf, %lf] Drive PWM: %lf Steer PWM: %lf \n", X[0], X[1], PWM[0], PWM[1]);
         //wait(1);
     }
 }
