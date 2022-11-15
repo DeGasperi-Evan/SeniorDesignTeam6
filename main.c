@@ -41,7 +41,8 @@ double steerTable[16][2] = { //Modified for Nicholas CHorette's Team's car
 
 // { circ/line(0/1), C_x/W1_x, C_y/W1_y, R/W2_x, CW/CCW (-1,1) / W2_y, Nx(halfplane), Ny(Halfplane), Px(halfplane), Py(Halfplane) }
 
-/* double controlArray[14][9] = {   
+// /* Track Test
+double controlArray[14][9] = {   
     {1,    1,    8.5,  1,    3,    0,    -1,   1,    3   }, 
     {0,    3,    3,    2,    1,    1,    0,    3,    1   },
     {1,    3,    1,    9.5,  1.5,  1,    0,    9.5,  1.5 },
@@ -59,6 +60,13 @@ double steerTable[16][2] = { //Modified for Nicholas CHorette's Team's car
 };
 // */
 
+ /* Track Test (No circles)
+double controlArray[2][9] = {   
+    {1,    1,    8.5,  1,    3,    0,    -1,   1,    1.5   }, 
+    {1,    1,    1.5,  9.5,  1.5,  1,    0,    9.5,  1.5 }
+};
+// */
+
 /* Line Test
 double controlArray[1][9] = {   
     {1,    1,    8.5,  1,    3,    0,    -1,   1,    3   }
@@ -71,7 +79,7 @@ double controlArray[1][9] = {
 };
 // */
 
-// /* Mini Track Test
+ /* Mini Track Test
 double controlArray[4][9] = {
     {1,    1,    6,    1,    2,    0,    -1,   1,    2   },
     {0,    2,    2,    1,    1,    0,     1,   3,    2   },
@@ -201,11 +209,12 @@ void main() {
         if(buf[0] != 0x0)
         {
             sscanf(strtok(buf, ","), "%lf", &posx);
-            printf("%.4lf\n", posx);
+            //printf("%.4lf\n", posx);
             sscanf(strtok(NULL, ","), "%lf", &posy);
-            printf("%.4lf\n", posy);
+            //printf("%.4lf\n", posy);
             sscanf(strtok(NULL, ","), "%lf", &heading);
-            printf("%.4lf\n", heading);
+            //printf("%.4lf\n", heading);
+            printf("Pozyx:\n [%.4lf, %.4lf] Heading: %.4lf\n", posx, posy, heading);
         }
         double pozyxInfo[2] = {posx, posy}; 
 
@@ -222,7 +231,9 @@ void main() {
         double queueInsert[3] = {counter, X[0],X[1]};
         insert(queueInsert);
         counter +=1; 
-        printf("Coordinates: [%lf, %lf] Drive PWM: %lf Steer PWM: %lf \n", X[0], X[1], PWM[0], PWM[1]);
+        printf("Estimated:\n [%.4lf, %.4lf] Heading: %.4lf\n", X[0], X[1], X[2]);
+        printf("PWM:\n Drive: %.lf Steer: %.lf\n", PWM[0], PWM[1]);
+        //printf("Coordinates: [%lf, %lf] Drive PWM: %lf Steer PWM: %lf \n", X[0], X[1], PWM[0], PWM[1]);
         //wait(1);
     }
 }
