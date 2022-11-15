@@ -232,7 +232,7 @@ void main() {
         insert(queueInsert);
         counter +=1; 
         printf("Estimated: [%.4lf, %.4lf] Heading: %.4lf\n", X[0], X[1], X[2]);
-        printf("PWM:       Drive: %.lf Steer: %.lf\n", PWM[0], PWM[1]);
+        printf("PWM:       Drive: %.lf Steer: %.lf\n\n", PWM[0], PWM[1]);
         //printf("Coordinates: [%lf, %lf] Drive PWM: %lf Steer PWM: %lf \n", X[0], X[1], PWM[0], PWM[1]);
         //wait(1);
     }
