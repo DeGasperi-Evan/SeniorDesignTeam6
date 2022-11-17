@@ -274,7 +274,7 @@ void main() {
 
         //------EXPERIMENTAL----REVERSE FUNCTION ATTEMPT
 
-
+        /*
         int holder = reverseCheck(posx, posy); 
         if(){ //should reverse car 
             //!!! -----reverse car, cannot find reverse function !!! 
@@ -282,7 +282,7 @@ void main() {
             estimatedPos(X, pozyxInfo); // needs to be sat to the pozyx data acutally after this is ran (reverse fucntion)
             updatePosPozyx(X, pozyxInfo);
         }//end of if statment 
-        
+        // */ 
         
         //NEEDS TO UPDATE POZYX DATA to current car position after reversing 
 
