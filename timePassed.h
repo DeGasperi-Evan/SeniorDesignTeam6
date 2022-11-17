@@ -8,8 +8,5 @@ Purpose: The purpose of this file is to link the "timePassed.c" file. to other C
 #include <time.h>
 
 
-clock_t startT; // not sure if needed, but its here
-clock_t endT; // not sure if needed, but its here
-
 double timePassed(); 
 void timeInit(); 
