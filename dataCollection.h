@@ -15,7 +15,7 @@ extern FILE *fpt; //should allow other files to use these functions properly and
 
 void fileGen(); 
 
-void collectData(float P_x, float P_y, float P_heading, float servoPWM, float motorPWM,  float S_x, float S_y, float S_head, float shaftEncoder ); 
+void collectData(float P_x, float P_y, float P_heading, float servoPWM, float motorPWM,  float S_x, float S_y, float S_head, float shaftEncoder, float time ); 
 
 
 void closeFile(); 

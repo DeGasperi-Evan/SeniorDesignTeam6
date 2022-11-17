@@ -35,16 +35,16 @@ void fileGen(){ // make file based, Similar to the "init" function for some prog
     fpt = fopen(cTime, "w+");
 
     //the headder of the data :) 
-    fprintf(fpt,"P_x, P_y, P_heading,  servoPWM, motorPWM, S_x, S_y, S_head, shaftEncoder\n"); 
+    fprintf(fpt,"P_x, P_y, P_heading,  servoPWM, motorPWM, S_x, S_y, S_head, shaftEncoder, time\n"); 
 
     //please run the collectData() function to collect data   
     
 } //end of fileGen()
 
-void collectData(float P_x, float P_y, float P_heading, float servoPWM, float motorPWM,  float S_x, float S_y, float S_head, float shaftEncoder ){ //implies that the file is initialized
+void collectData(float P_x, float P_y, float P_heading, float servoPWM, float motorPWM,  float S_x, float S_y, float S_head, float shaftEncoder, float time ){ //implies that the file is initialized
 
 //loop for the actual DATA! :) 
-    fprintf(fpt," %f, %f, %f, %f, %f, %f, %f, %f\n", P_x, P_y, P_heading, servoPWM, motorPWM,   S_x, S_y, S_head, shaftEncoder); // the "\n" allows for the next line in the file to be filled next, an NOT the same line over and over again
+    fprintf(fpt," %f, %f, %f, %f, %f, %f, %f, %f, %f, %f\n", P_x, P_y, P_heading, servoPWM, motorPWM,   S_x, S_y, S_head, shaftEncoder, time); // the "\n" allows for the next line in the file to be filled next, an NOT the same line over and over again
 
 	
 		//when you want to properly save the data, it is recommended that you use the closeFile() function to do so
@@ -57,14 +57,14 @@ void closeFile(){ //implies that the fileGen() function was run
      fclose(fpt);
 }//end of closeFile()
 
-  /* 
+//  /* 
 void main(){ //---------PLEASE DISABLE WHEN YOU ARE DONE TESTING TY <3 ) ---------
 
 fileGen(); //make the file
 // 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 
-collectData(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -999.0 ); //collect data
+collectData(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -999.0, 0.0 ); //collect data
 
-collectData(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,  -999.0  ); 
+collectData(1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0,  -999.0, 9.0  ); 
 
 closeFile(); //save the file (safely)
 

@@ -16,10 +16,11 @@ void timeInit(){ //starts the clock for the timer
 }//end of timeInit()
 
 
-
-double timePassed(){ 
+//double timePassed()
+float timePassed(){ 
     endT = clock() - startT; // time that passed 
-    double time_taken = ((double)endT)/CLOCKS_PER_SEC; // in seconds
+    //double time_taken = ((double)endT)/CLOCKS_PER_SEC; // in seconds
+	float time_taken = ((float)endT)/CLOCKS_PER_SEC; // in seconds
     return time_taken; 
 }//end of timePassed()
 

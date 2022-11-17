@@ -8,5 +8,6 @@ Purpose: The purpose of this file is to link the "timePassed.c" file. to other C
 #include <time.h>
 
 
-double timePassed(); 
+//double timePassed(); 
+float timePassed(); 
 void timeInit(); 
