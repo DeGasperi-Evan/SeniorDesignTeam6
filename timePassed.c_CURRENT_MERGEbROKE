@@ -1,0 +1,76 @@
+/*
+Author: Nicholas Chorette
+Date and Time: 11/17/2022 (@1:40am)
+Purpose: The purpose of this program is to easly give the user (aka, Evan our belovid Simulation Team member) the capability to EASLY record system time for the data for each pozyx point collected, or other use-cases. This will allow us to compare data as time goes on better on a time-by-time basis vs a datapoint-by-datapoint basis. 
+
+
+*/
+#include <stdio.h>
+#include <time.h>
+
+clock_t startT;
+clock_t endT;
+
+void timeInit(){ //starts the clock for the timer 
+	startT = clock();  // Start time 
+}//end of timeInit()
+
+
+
+double timePassed(){ 
+    endT = clock() - startT; // time that passed 
+    double time_taken = ((double)endT)/CLOCKS_PER_SEC; // in seconds
+
+
+	//---------EXPERIMENTAL: i WANNA SEE IF THIS WILL GIVE ME PROPER SECONDS 0_0-------
+
+	time_taken = time_taken * 100; 
+
+	//---END OF EXPERIMENTAL---
+
+    return time_taken; 
+}//end of timePassed()
+
+
+
+
+
+//-----------END OF CUSTOM FUNCTIONS + VARS---------------
+
+/*
+void fun()
+{
+	printf("fun() starts \n");
+	printf("Press enter to stop fun \n");
+	while(1)
+	{
+		if (getchar())
+			break;
+	}
+	printf("fun() ends \n");
+}
+// */
+
+/*
+// The main program calls fun() and measures time taken by fun()
+int main()
+{
+	// Calculate the time taken by fun()
+	
+    timeInit();
+
+    while(1){ 
+        fun(); // whatever you are measuring something doing 
+
+
+	    
+        double timeElapsed = timePassed(); 
+	    printf("fun() took %f seconds to execute \n", timeElapsed);
+
+    }//end of while(1)
+
+
+    return 0;
+}
+
+// */
